@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
 {
-    class Heap
+    class Heap : Ordenacao
     {
-        public int Comparacoes { get; set; }
-        public int Trocas { get; set; }
-
 
     }
 }

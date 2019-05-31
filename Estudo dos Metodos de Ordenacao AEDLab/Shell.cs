@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
 {
-    class Shell 
+    class Shell : Ordenacao
     {
-        public int Comparacoes { get; set; }
-        public int Trocas { get; set; }
+        public Shell() : base()
+        {
+
+        }
 
 
     }
