@@ -13,7 +13,7 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
 
         }
 
-        public static void Sort(int[] arr)
+        public void Sort(int[] arr)
         {
             int n = arr.Length, i, j, val, flag;
             for (i = 1; i < n; i++)
@@ -22,14 +22,18 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
                 flag = 0;
                 for (j = i - 1; j >= 0 && flag != 1;)
                 {
+                    base.Comparacoes++;
                     if (val < arr[j])
                     {
+                        base.Trocas++;
                         arr[j + 1] = arr[j];
                         j--;
                         arr[j + 1] = val;
                     }
                     else
+                    {
                         flag = 1;
+                    }
                 }
             }
         }
