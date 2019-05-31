@@ -11,6 +11,7 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
         public int Comparacoes { get; set; }
         public int Trocas { get; set; }
 
+            
         public Ordenacao()
         {
             Comparacoes = 0;

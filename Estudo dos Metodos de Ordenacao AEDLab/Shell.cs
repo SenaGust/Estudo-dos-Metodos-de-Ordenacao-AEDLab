@@ -12,7 +12,7 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
         {
 
         }
-        public void Sort(int[] vetor)
+        public override void Sort(int[] vetor)
         {
             int h = 1;
             int n = vetor.Length;

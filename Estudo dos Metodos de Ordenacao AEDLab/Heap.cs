@@ -12,7 +12,7 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
         {
 
         }
-        public void Sort(int[] vetor)
+        public override void Sort(int[] vetor)
         {
             BuildMaxHeap(vetor);
             int n = vetor.Length;

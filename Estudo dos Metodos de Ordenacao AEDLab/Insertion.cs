@@ -13,22 +13,22 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
 
         }
 
-        public void Sort(int[] arr)
+        public override void Sort(int[] vetor)
         {
-            int n = arr.Length, i, j, val, flag;
+            int n = vetor.Length, i, j, val, flag;
             for (i = 1; i < n; i++)
             {
-                val = arr[i];
+                val = vetor[i];
                 flag = 0;
                 for (j = i - 1; j >= 0 && flag != 1;)
                 {
                     base.Comparacoes++;
-                    if (val < arr[j])
+                    if (val < vetor[j])
                     {
                         base.Trocas++;
-                        arr[j + 1] = arr[j];
+                        vetor[j + 1] = vetor[j];
                         j--;
-                        arr[j + 1] = val;
+                        vetor[j + 1] = val;
                     }
                     else
                     {

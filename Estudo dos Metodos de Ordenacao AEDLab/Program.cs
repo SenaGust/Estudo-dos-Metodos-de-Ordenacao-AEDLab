@@ -11,6 +11,7 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
             Console.WriteLine(gerarRespostaConjunto(10000, true));
             Console.WriteLine("terminou com thread");
 
