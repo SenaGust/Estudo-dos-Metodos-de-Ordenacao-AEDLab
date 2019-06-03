@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
 {
@@ -11,12 +13,101 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
     {
         static void Main(string[] args)
         {
-            Console.ReadKey();
-            Console.WriteLine(gerarRespostaConjunto(10000, true));
-            Console.WriteLine("terminou com thread");
+            StreamWriter gravacaoArquivo = new StreamWriter("dado.csv");
 
-            Console.WriteLine(gerarRespostaConjunto(10000, true));
-            Console.WriteLine("terminou com thread");
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(10, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(20, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(30, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(40, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(50, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(60, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(70, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(80, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(90, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(100, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(800, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(900, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(1000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(1100, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(12000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(13000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(14000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(15000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(50000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(170000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(180000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(190000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.WriteLine(gerarRespostaConjunto(200000, true));
+            gravacaoArquivo.WriteLine();
+            Console.WriteLine("Terminou");
+
+            gravacaoArquivo.Close();
             //Fim
             Console.Write("\n\nPressione qualquer tecla para continuar..");
             Console.ReadKey();
@@ -54,9 +145,11 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
             Heap heap = new Heap();
             Quick quick = new Quick();
 
+            Stopwatch stopWatch;
             if (usarThread)
             {
                 #region Com Thread
+
                 //Exemplo Thread threadFibonacci = new Thread(() => Fibonacci(respostaUsuario, ref resultadoFibo));
                 Thread threadBubble = new Thread(() => bubble.Sort(vetorBubble));
                 Thread threadInsertion = new Thread(() => insertion.Sort(vetorInsertion));
@@ -64,6 +157,7 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
                 Thread threadHeap = new Thread(() => heap.Sort(vetorHeap));
                 Thread threadQuick = new Thread(() => quick.Sort(vetorQuick));
 
+                stopWatch = Stopwatch.StartNew();
                 //Iniciando threads
                 threadBubble.Start();
                 threadInsertion.Start();
@@ -72,21 +166,27 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
                 threadQuick.Start();
 
                 //Esperando todas acabarem
+                threadQuick.Join();
                 threadBubble.Join();
                 threadInsertion.Join();
                 threadShell.Join();
                 threadHeap.Join();
-                threadQuick.Join();
+
+                stopWatch.Stop();
                 #endregion
+
             }
             else
             {
+                stopWatch = Stopwatch.StartNew();
                 //Iniciando ordenação
                 bubble.Sort(vetorBubble);
                 insertion.Sort(vetorInsertion);
                 shell.Sort(vetorShell);
                 heap.Sort(vetorHeap);
                 quick.Sort(vetorQuick);
+
+                stopWatch.Stop();
             }
 
             // Escrevendo resultados
@@ -96,6 +196,7 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
             auxImpressao.AppendFormat("Shell;{0};{1}\n", shell.Comparacoes, shell.Trocas);
             auxImpressao.AppendFormat("Heap;{0};{1}\n", heap.Comparacoes, heap.Trocas);
             auxImpressao.AppendFormat("Quick;{0};{1}\n", quick.Comparacoes, quick.Trocas);
+            auxImpressao.AppendFormat("Tempo: {0}\n", stopWatch.Elapsed);
 
             return auxImpressao.ToString();
 
