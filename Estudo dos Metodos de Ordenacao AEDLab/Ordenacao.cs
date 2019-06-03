@@ -8,8 +8,8 @@ namespace Estudo_dos_Metodos_de_Ordenacao_AEDLab
 {
     abstract class Ordenacao
     {
-        public int Comparacoes { get; set; }
-        public int Trocas { get; set; }
+        public double Comparacoes { get; set; }
+        public double Trocas { get; set; }
 
             
         public Ordenacao()
